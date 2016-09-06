@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bottle\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-13 21:49+0100\n"
+"POT-Creation-Date: 2015-12-19 14:15+0100\n"
 "PO-Revision-Date: 2015-12-13 21:06+0000\n"
 "Last-Translator: defnull <marc@gsites.de>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/bottle/bottle/language/zh_CN/)\n"
@@ -1211,7 +1211,7 @@ msgstr ""
 #: ../../../bottle.pydocstring of bottle.BaseResponse.set_cookie:17
 msgid ""
 "prevents client-side javascript to read this cookie (default: off, requires "
-"Python 2.6 or newer)."
+"Python 2.7 or newer)."
 msgstr ""
 
 #: ../../../bottle.pydocstring of bottle.BaseResponse.set_cookie:20
