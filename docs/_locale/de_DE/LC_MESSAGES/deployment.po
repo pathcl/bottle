@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2009-2015, Marcel Hellkamp
+# Copyright (C) 2009-2017, Marcel Hellkamp
 # This file is distributed under the same license as the Bottle package.
 # 
 # Translators:
@@ -189,14 +189,6 @@ msgstr ""
 
 #: ../../deployment.rst:67
 msgid "Multi-threaded, stable, tried and tested"
-msgstr ""
-
-#: ../../deployment.rst:68
-msgid "rocket"
-msgstr ""
-
-#: ../../deployment.rst:68
-msgid "rocket_"
 msgstr ""
 
 #: ../../deployment.rst:68

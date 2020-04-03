@@ -93,7 +93,22 @@ Both the ``%`` and the ``<%`` tokens are only recognized if they are the first n
   \<% Another line that starts with a token but is rendered as text.
   {{'\\%'}} this line starts with an escaped token.
 
-If you find yourself to escape a lot, consider using :ref:`custom tokens <stpl-custom-tokens>`.
+If you find yourself needing to escape a lot, consider using :ref:`custom tokens <stpl-custom-tokens>`.
+
+Note that ``%`` and ``<% %>`` work in *exactly* the same way. The latter is only a convenient way to type less and avoid clutter for longer code segments. This means that in ``<% %>`` blocks, all indented code must be terminated with an ``end``, as in the following example::
+
+    <%
+        if some_condition:
+            some_operation()
+        elif some_other_condition:
+            some_other_operation()
+        else:
+            yet_another_operation()
+            if yet_another_condition:
+              some_more_stuff()
+            end
+        end
+    %>
 
 Whitespace Control
 -----------------------

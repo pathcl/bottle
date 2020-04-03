@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 import unittest
 import time
-from tools import tob
 import sys
 import os
 import signal
 import socket
 from subprocess import Popen, PIPE
-import tools
-from bottle import server_names
+from . import tools
+from bottle import server_names, tob
 
 try:
     from urllib.request import urlopen
@@ -55,9 +54,11 @@ class TestServer(unittest.TestCase):
             if rv is None:
                 raise AssertionError("Server took too long to start up.")
             if rv is 128: # Import error
-                tools.warn("Skipping %r test (ImportError)." % self.server)
-                self.skip = True
-                return
+                if os.environ.get('CI') != 'true' or \
+                        os.environ.get('TRAVIS_PYTHON_VERSION') not in ('2.7', '3.6'):
+                    tools.warn("Skipping %r test (ImportError)." % self.server)
+                    self.skip = True
+                    return
             if rv is 3: # Port in use
                 continue
             raise AssertionError("Server exited with error code %d" % rv)
@@ -97,7 +98,22 @@ class TestServer(unittest.TestCase):
         self.assertEqual(tob('OK'), self.fetch('test'))
 
 
-blacklist = ['cgi', 'flup', 'gae']
+blacklist = ['cgi', 'flup', 'gae', 'wsgiref']
+
+if sys.version_info.major == 2:
+    blacklist += [
+        'aiohttp',
+        'uvloop',
+    ]
+else:
+    blacklist += [
+        'bjoern',
+        'diesel',
+        'fapws3',
+        'flup',
+        'gevent',
+    ]
+
 
 for name in set(server_names) - set(blacklist):
     classname = 'TestServerAdapter_'+name

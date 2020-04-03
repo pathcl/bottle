@@ -34,7 +34,7 @@ Bottle does not depend on any external libraries. You can just download `bottle.
 
 .. code-block:: bash
 
-    $ wget http://bottlepy.org/bottle.py
+    $ wget https://bottlepy.org/bottle.py
 
 This will get you the latest development snapshot that includes all the new features. If you prefer a more stable environment, you should stick with the stable releases. These are available on `PyPI <http://pypi.python.org/pypi/bottle>`_ and can be installed via :command:`pip` (recommended), :command:`easy_install` or your package manager:
 
@@ -44,7 +44,7 @@ This will get you the latest development snapshot that includes all the new feat
     $ sudo easy_install bottle             # alternative without pip
     $ sudo apt-get install python-bottle   # works for debian, ubuntu, ...
 
-Either way, you'll need Python 2.7 or newer (including 3.2+) to run bottle applications. If you do not have permissions to install packages system-wide or simply don't want to, create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`_ first:
+Either way, you'll need Python 2.7 or newer (including 3.4+) to run bottle applications. If you do not have permissions to install packages system-wide or simply don't want to, create a `virtualenv <http://pypi.python.org/pypi/virtualenv>`_ first:
 
 .. code-block:: bash
 
@@ -362,7 +362,7 @@ To redirect a client to a different URL, you can send a ``303 See Other`` respon
 You may provide a different HTTP status code as a second parameter.
 
 .. note::
-    Both functions will interrupt your callback code by raising an :exc:`HTTPError` exception.
+    Both functions will interrupt your callback code by raising an :exc:`HTTPResponse` exception.
 
 .. rubric:: Other Exceptions
 
@@ -420,6 +420,7 @@ The :meth:`Response.set_cookie` method accepts a number of additional keyword ar
 * **path:**       Limit the cookie to a given path (default: ``/``)
 * **secure:**     Limit the cookie to HTTPS connections (default: off).
 * **httponly:**   Prevent client-side javascript to read this cookie (default: off, requires Python 2.7 or newer).
+* **same_site:**  Disables third-party use for a cookie. Allowed attributes: `lax` and `strict`. In strict mode the cookie will never be sent. In lax mode the cookie is only sent with a top-level GET request.
 
 If neither `expires` nor `max_age` is set, the cookie expires at the end of the browser session or as soon as the browser window is closed. There are some other gotchas you should consider when using cookies:
 
@@ -870,7 +871,7 @@ Development
 ================================================================================
 
 So you have learned the basics and want to write your own application? Here are
-some tips that might help you beeing more productive.
+some tips that might help you being more productive.
 
 .. _default-app:
 
